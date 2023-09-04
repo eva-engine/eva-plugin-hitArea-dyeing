@@ -1,2 +1,1 @@
-export { default as Demo } from './component';
-export { default as DemoSystem } from './system';
+export { default as HitAreaDyeingSystem } from './system';

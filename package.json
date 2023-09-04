@@ -1,5 +1,5 @@
 {
-  "name": "eva-plugin-demo",
+  "name": "eva-plugin-hitarea-dyeing",
   "version": "0.1.0",
   "scripts": {
     "dev": "npx vite ./example -c ./example/vite.config.ts",
@@ -67,6 +67,8 @@
   "dependencies": {
     "@eva/eva.js": "^1.0.1-alpha.3",
     "@eva/plugin-renderer": "^1.0.1-alpha.3",
+    "@eva/plugin-renderer-event": "^1.2.8",
+    "@eva/plugin-renderer-graphics": "^1.2.8",
     "@eva/renderer-adapter": "^1.0.1-alpha.3",
     "pixi.js": "^4.8.7"
   }
