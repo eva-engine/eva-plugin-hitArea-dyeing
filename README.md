@@ -1,25 +1,32 @@
-# Eva.js plugin template
+# Eva.js HitArea Debug Plugin
 
-## How To Develop a Eva.js plugin?
+在 EvaJs 中，给 Event 设置了 HitArea，如果需要调整点击区域的宽高，位置，形状等参数，本插件可以提供可视化的染色能力
 
-[https://eva.js.org/#/tutorials/pluginDevelop](https://eva.js.org/#/tutorials/pluginDevelop)
+![插件效果](https://gw.alicdn.com/imgextra/i1/O1CN01G1ue7I21qXave2eiK_!!6000000007036-0-tps-2470-1130.jpg)
 
-## How To use this template?
+## 使用方法
 
-### install
+```
+npm install @eva/eva-plugin-hitarea-dyeing --save-dev
+```
 
-`npm install` or `yarn install` whatever.
 
-### develop server
+```javascript
+import {HitAreaDyeingSystem} from '@eva/eva-plugin-hitarea-dyeing';
 
-run `npm run dev` first, then a page will open as `http://localhost:8080` in your default brower. When file in example directory changed, page will reload automatically.
 
-### build
+const game = new Game({
+  systems: [new HitAreaDyeingSystem()]
+})
 
-- run `npm run buildDev` to build develop files
-- run `npm run buildProd` to build release files
+...
 
-## Naming conventions
+```
 
-- The name of this package must be prefixed with `eva-plugin-`
-- System must be export with suffix `System`
+### Options
+
+| 名称                  | 描述                                                                             | 默认值 |
+| --------------------- | -------------------------------------------------------------------------------- | ------ |
+| hitAreaColor          | 命中区域颜色                                                                     | red    |
+| hitAreaOpacity        | 命中区域透明度                                                                   | 0.3    |
+| filterGameObjectNames | 默认对所有设置了 Event HitArea 的 GameObject 生效，可以通过 GameObject name 过滤 | 空数组 |

@@ -2,20 +2,36 @@ import { System } from '@eva/eva.js';
 import { HIT_AREA_TYPE } from '@eva/plugin-renderer-event';
 import { Graphics } from '@eva/plugin-renderer-graphics';
 
-export default class HitAreaDyeingSystem extends System {
+export interface HitAreaDyeingSystemPramas {
+  hitAreaColor?: string;
+  hitAreaOpacity?: number;
+  filterGameObjectNames?: string[];
+}
+export default class HitAreaDyeingSystem extends System<HitAreaDyeingSystemPramas> {
   static systemName = 'HitAreaDyeingSystem';
-  
+  private hitAreaColor = 'red';
+  private hitAreaOpacity = 0.3;
+  private filterGameObjectNames: string[] = [];
+
+  init(params: HitAreaDyeingSystemPramas) {
+    const { hitAreaColor, hitAreaOpacity, filterGameObjectNames } = params;
+    if (hitAreaColor) this.hitAreaColor = hitAreaColor;
+    if (hitAreaOpacity) this.hitAreaOpacity = hitAreaOpacity;
+    if (filterGameObjectNames) this.filterGameObjectNames = filterGameObjectNames;
+  }
+
   update() {
     this.game.gameObjects.forEach((obj) => {
       const hitArea = obj.getComponent('Event')?.hitArea;
       if (!hitArea) return;
+      if (this.filterGameObjectNames.indexOf(obj.name) > -1) return;
       if (obj.components.find((item) => item.name == 'HitAreaDyeing')) return;
 
       const { x, y, width, height, paths, radius } = hitArea.style;
       const gra = obj.addComponent(new Graphics());
       gra.name = 'HitAreaDyeing';
-      gra.graphics.beginFill(0xde3249, 0.4);
-      
+      gra.graphics.beginFill(this.hitAreaColor, this.hitAreaOpacity);
+
       switch (hitArea.type) {
         case HIT_AREA_TYPE.Circle:
           gra.graphics.drawCircle(x, y, radius);

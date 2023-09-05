@@ -1,6 +1,6 @@
 {
   "name": "eva-plugin-hitarea-dyeing",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "npx vite ./example -c ./example/vite.config.ts",
     "build": "node ./scripts/build.js",
@@ -8,9 +8,9 @@
     "buildProd": "npm run build -- -r -t"
   },
   "main": "index.js",
-  "module": "./dist/plugin.esm.js",
-  "typings": "./dist/eva-plugin-demo.d.ts",
-  "bundle": "EVA.plugin.demo",
+  "module": "./dist/plugin-hitarea-dyeing.esm.js",
+  "typings": "./dist/plugin-hitarea-dyeing.d.ts",
+  "bundle": "EVA.plugin.hitarea.dyeing",
   "keywords": [
     "eva.js",
     "plugin"
